@@ -5,6 +5,7 @@
 #endif
 #include <iostream>
 #include <stdlib.h>
+#include <array>
 using namespace std;
 void clearScreen(){
   #ifdef __unix__
@@ -13,6 +14,20 @@ void clearScreen(){
     system("CLS");
   #endif
 }
+string buildImage(int pixels){
+  string plant[] = {"*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****"};
+  string output[plant.size()];
+  string temp(plant[0].size(), ' ');
+  for(int i = 0; i < output.size(); i++){
+    output[i] = temp; 
+  }
+  for(int = i = (int)(pixels/size(plant[0])); i < plant.size(); i++){
+    for(int j = 0; j < i; j++){
+      
+    }
+  }
+}
+
 void eveLeftToRight(int start, int end){
   string eveRight[] ={"           @@#@@@@.    \n",
   "        @           #  \n",
