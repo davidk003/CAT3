@@ -14,18 +14,20 @@ void clearScreen(){
     system("CLS");
   #endif
 }
-string buildImage(int pixels){
+string* buildImage(int pixels, string* strArr){
   string plant[] = {"*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****"};
-  string output[plant.size()];
+  string* output = new string(sizeof(plant)/sizeof(plant[0]));
   string temp(plant[0].size(), ' ');
-  for(int i = 0; i < output.size(); i++){
+  for(int i = 0; i < sizeof(output)/sizeof(output[0]); i++){
     output[i] = temp; 
   }
-  for(int = i = (int)(pixels/size(plant[0])); i < plant.size(); i++){
+  for(int i = (int)(pixels/size(plant[0])); i < sizeof(plant)/sizeof(plant[0]); i++){
     for(int j = 0; j < i; j++){
-      
+      output[j]=plant[j];
     }
   }
+  strArr = output;
+  return strArr;
 }
 
 void eveLeftToRight(int start, int end){
@@ -134,8 +136,17 @@ int main(){
     // cout << "Affirmative, [this.self] executing process \"become solution\".\n" << eve;
     // sleep(3);
     // clearScreen();
-    eveLeftToRight(0,170);
-    eveRightToLeft(0,170);
+    //eveLeftToRight(0,150);
+    //eveRightToLeft(0,150);
+    for(int i = 0; i < 100; i++){
+      string temp[] = {};
+      buildImage(i, temp);
+      for(int j = 0; j < sizeof(temp)/sizeof(temp[0]);j++){
+        cout << temp[j] << "\n";
+      }
+      sleep(1);
+      clearScreen();
+    }
     cout << "THE END\n";
     //WALLE and eve?
     //cleaning animation (build up blocks)
