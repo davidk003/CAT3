@@ -7,37 +7,65 @@ using namespace std;
 
 
 void printImage(vector<string>* vec){
+  string output;
   for(auto line: *vec){
-    cout << line << "\n";
+    output = output + line + "\n";
   }
+  cout << output;
 }
 vector<string>* buildImage(int pixels){
-  string plant[] = {"*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****","*****"};
+    string plant[] = {
+"                    =+========+=                    \n"
+"               +====================+               \n"
+"            ============================            \n"
+"         +===============+================+         \n"
+"       +===============+    ================+       \n"
+"      ================+      -================      \n"
+"    +================          ================-    \n"
+"   +================.           ================+   \n"
+"  +================+            +================-  \n"
+"  =================              =================  \n"
+" ==================              =================+ \n"
+" ==================              ================== \n"
+"+==================              ==================:\n"
+"+==================+            +==================+\n"
+"+===================-          -===================+\n"
+"+=====================        +====================.\n"
+" ========.       -====+++++=======:       :======== \n"
+" ========+          +=+=======+=          +=======+ \n"
+"  ========            ===  ===            ========  \n"
+"  +========            +=  ==            ========-  \n"
+"   +========+          ==  ==          +========+   \n"
+"    +=========+       ===  ===       ===========    \n"
+"      ===================  ==================+      \n"
+"       +=================  ================++       \n"
+"         +===============  ===============+         \n"
+"           .============================            \n"
+"               +====================+               \n"
+"                    +++=======++                    "};
   vector<string>* output = new vector<string>;
-  string temp(plant[0].size(), '_');
-  for(int i = 0; i < 17; i++){
+  string temp(plant[0].size(), ' ');
+  for(int i = 0; i < 29; i++){
     output->push_back(temp);
   }
-  //printImage(output);
   for(int i = (int)(pixels/size(plant[0])); i > 0 ; i--){
-    cout << i << "\n";
     for(int j = 0; j < i; j++){
-      //cout << "i=" << i << "j=" << j << "\n";
       output->at(j)=plant[j];
     }
-    if(i<size(plant)){
-      output->at(i) = plant[i].substr(0,pixels%size(plant[0]));
-    }
   }
+    int workingLine=(int)(pixels/size(plant[0]));
+    string padding(size(plant[0])-(pixels%size(plant[0])), ' ');
+    if(workingLine<size(plant)){
+      output->at(workingLine) = plant[workingLine].substr(0,pixels%size(plant[0])) + padding;
+    }
   return output;
 }
 
 int main(){
-  for(int i = 0; i < 90; i++){
+  for(int i = 0; i < 29*54;i=i+10){
     vector<string>* temp = buildImage(i);
-    //cout << sizeof(test)/sizeof("*****") << "\n";
     printImage(temp);
-    usleep(50000);
+    usleep(10000);
     system("clear");
     
   }
